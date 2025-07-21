@@ -27,7 +27,8 @@ except FileNotFoundError:
     print("transactions.csv not found. Loading sample_transactions.csv instead.")
     df = pd.read_csv("data/sample_transactions.csv")
 
-# === Separate features and labels ===X = df.drop(['Class'], axis=1)
+# === Separate features and labels ==
+X = df.drop(['class'], axis=1)
 y = df['class']
 
 # === Split data ===
