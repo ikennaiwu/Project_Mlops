@@ -20,7 +20,6 @@ os.makedirs("outputs", exist_ok=True)
 
 
 # === Load the dataset ===
-df = pd.read_csv("data/transactions.csv")
 try:
     df = pd.read_csv("data/transactions.csv")
     print("Loaded full dataset.")
