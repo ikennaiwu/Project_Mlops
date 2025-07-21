@@ -28,7 +28,7 @@ except FileNotFoundError:
     df = pd.read_csv("data/sample_transactions.csv")
 
 # === Separate features and labels ===X = df.drop(['Class'], axis=1)
-y = df['Class']
+y = df['class']
 
 # === Split data ===
 X_train, X_test, y_train, y_test = train_test_split(
