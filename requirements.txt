@@ -3,6 +3,7 @@ uvicorn
 scikit-learn
 joblib 
 matplotlib
+seaborn
 pandas
 prometheus-client
 prometheus-fastapi-instrumentator
