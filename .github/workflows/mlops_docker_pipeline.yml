@@ -74,6 +74,3 @@ jobs:
       - name: 🚀 Spin Up Docker Compose
         run: |
           docker-compose -f docker-compose.yml up -d --build
-on:
-  workflow_dispatch:
-
