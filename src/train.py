@@ -17,11 +17,18 @@ from sklearn.metrics import (
 os.makedirs("models", exist_ok=True)
 os.makedirs("outputs", exist_ok=True)
 
+
+
 # === Load the dataset ===
 df = pd.read_csv("data/transactions.csv")
+try:
+    df = pd.read_csv("data/transactions.csv")
+    print("Loaded full dataset.")
+except FileNotFoundError:
+    print("transactions.csv not found. Loading sample_transactions.csv instead.")
+    df = pd.read_csv("data/sample_transactions.csv")
 
-# === Separate features and labels ===
-X = df.drop(['Class'], axis=1)
+# === Separate features and labels ===X = df.drop(['Class'], axis=1)
 y = df['Class']
 
 # === Split data ===
