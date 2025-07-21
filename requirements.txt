@@ -1,7 +1,8 @@
 fastapi
 uvicorn
 scikit-learn
-joblib
+joblib 
+matplotlib
 pandas
 prometheus-client
 prometheus-fastapi-instrumentator
