@@ -32,7 +32,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: 🧠 Train Model
-        run: python train.py
+        run: python src/train.py
 
       - name: 📘 Log to MLflow
         run: python log_model_mlflow.py
