@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
+import gdown
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -17,20 +18,21 @@ from sklearn.metrics import (
 os.makedirs("models", exist_ok=True)
 os.makedirs("outputs", exist_ok=True)
 
+# === Download dataset from Google Drive if not present ===
+data_path = "data/transactions.csv"
+gdrive_file_id = "196ZYPE-buPq9CUF4XDVLUhgBmpLoLUfA"  # Your actual file ID
 
+if not os.path.exists(data_path):
+    print(f"{data_path} not found. Downloading from Google Drive...")
+    os.makedirs("data", exist_ok=True)
+    url = f"https://drive.google.com/uc?id={gdrive_file_id}"
+    gdown.download(url, data_path, quiet=False)
 
 # === Load the dataset ===
-# Use a direct download link
-url = "https://drive.google.com/uc?export=download&id=196ZYPE-buPq9CUF4XDVLUhgBmpLoLUfA"
+print(f"Loading dataset from: {data_path}")
+df = pd.read_csv(data_path)
 
-try:
-    df = pd.read_csv("data/transactions.csv")
-    print("data/transactions.csv found. Using local file.")
-except FileNotFoundError:
-    print("data/transactions.csv not found. Loading from URL instead.")
-    df = pd.read_csv(url)
-
-# === Separate features and labels ==
+# === Separate features and labels ===
 X = df.drop(['Class'], axis=1)
 y = df['Class']
 
