@@ -20,16 +20,19 @@ os.makedirs("outputs", exist_ok=True)
 
 
 # === Load the dataset ===
+# Use a direct download link
+url = "https://drive.google.com/uc?export=download&id=196ZYPE-buPq9CUF4XDVLUhgBmpLoLUfA"
+
 try:
     df = pd.read_csv("data/transactions.csv")
-    print("Loaded full dataset.")
+    print("data/transactions.csv found. Using local file.")
 except FileNotFoundError:
-    print("transactions.csv not found. Loading sample_transactions.csv instead.")
-    df = pd.read_csv("data/sample_transactions.csv")
+    print("data/transactions.csv not found. Loading from URL instead.")
+    df = pd.read_csv(url)
 
 # === Separate features and labels ==
-X = df.drop(['class'], axis=1)
-y = df['class']
+X = df.drop(['Class'], axis=1)
+y = df['Class']
 
 # === Split data ===
 X_train, X_test, y_train, y_test = train_test_split(
