@@ -2,6 +2,7 @@ fastapi
 uvicorn
 scikit-learn
 joblib 
+gdown
 matplotlib
 seaborn
 pandas
