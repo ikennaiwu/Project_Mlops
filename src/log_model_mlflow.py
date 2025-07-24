@@ -3,7 +3,7 @@ import mlflow.sklearn
 import pickle
 
 # Load saved model
-with open("model/fraud_model.pkl", "rb") as f:
+with open("models/logistic_model.pkl", "rb") as f:
     model = pickle.load(f)
 
 # Load metrics
