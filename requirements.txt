@@ -1,8 +1,8 @@
 fastapi
 uvicorn
 scikit-learn
-joblib 
-gdown
+joblib
+gdown 
 matplotlib
 seaborn
 mlflow
