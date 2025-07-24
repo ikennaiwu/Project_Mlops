@@ -2,3 +2,4 @@ data/transactions.csv
 data/transactions.csv
 env/
 encoded.txt
+.venv/
