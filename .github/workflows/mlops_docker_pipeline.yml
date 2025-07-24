@@ -35,7 +35,7 @@ jobs:
         run: python src/train.py
 
       - name: 📘 Log to MLflow
-        run: python log_model_mlflow.py
+        run: python src/log_model_mlflow.py
 
   build-and-push:
     name: 🐳 Docker CI/CD
