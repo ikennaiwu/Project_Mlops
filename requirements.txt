@@ -5,6 +5,7 @@ joblib
 gdown
 matplotlib
 seaborn
+mlflow
 pandas
 prometheus-client
 prometheus-fastapi-instrumentator
