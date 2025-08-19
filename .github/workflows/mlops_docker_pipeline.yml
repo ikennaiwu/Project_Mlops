@@ -10,7 +10,7 @@ on:
       - 'docker-compose.yml'
       - 'requirements.txt'
       - 'prometheus.yml'
-      - '.github/workflows/mlops_fastapi_pipeline.yml'
+      - '.github/workflows/mlops_docker_pipeline.yml'
 
 jobs:
   train-and-log:
