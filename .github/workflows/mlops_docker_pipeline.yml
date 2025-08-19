@@ -97,5 +97,7 @@ jobs:
             cd /home/ubuntu/Project_Mlops
             git pull origin main
             docker pull ${{ secrets.DOCKER_USERNAME }}/fastapi-app:latest
-            docker stop fastapi-app || true && docker rm fastapi-app || true
+            # Stop & remove old container if it exists
+            docker stop fastapi-app || true
+            docker rm fastapi-app || true
             docker run -d -p 8000:8000 --name fastapi-app ${{ secrets.DOCKER_USERNAME }}/fastapi-app:latest
