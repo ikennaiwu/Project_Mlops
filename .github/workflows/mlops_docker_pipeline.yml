@@ -76,26 +76,18 @@ jobs:
         run: |
           docker-compose -f docker-compose.yml up -d --build
 
-    deploy:
+  deploy:
     name: 🚀 Deploy to AWS via SSH
     runs-on: ubuntu-latest
     needs: build-and-push
 
     steps:
-      - name: ⬇️ Checkout Code
-        uses: actions/checkout@v3
-
-      # ✅ Recreate the PEM key from GitHub Secret
-      - name: Recreate PEM key
+      - name: 🔑 Recreate PEM key
         run: |
-          echo "$AWS_SSH_KEY_B64" | base64 -d > mlopkey.pem
+          echo "${{ secrets.AWS_SSH_KEY_B64 }}" | base64 -d > mlopkey.pem
           chmod 600 mlopkey.pem
-        shell: bash
-        env:
-          AWS_SSH_KEY_B64: ${{ secrets.AWS_SSH_KEY_B64 }}
 
-      # ✅ Deploy to AWS via SSH
-      - name: Deploy to AWS via SSH
+      - name: 🚀 Deploy to AWS
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.AWS_HOST }}
@@ -104,7 +96,6 @@ jobs:
           script: |
             cd /home/ubuntu/Project_Mlops
             git pull origin main
-            docker compose down
-            docker compose up -d --build
-
-
+            docker pull ${{ secrets.DOCKER_USERNAME }}/fastapi-app:latest
+            docker stop fastapi-app || true && docker rm fastapi-app || true
+            docker run -d -p 8000:8000 --name fastapi-app ${{ secrets.DOCKER_USERNAME }}/fastapi-app:latest
