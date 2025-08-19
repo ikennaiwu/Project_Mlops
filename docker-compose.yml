@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  fraud-api:
+  fastapi-app:
     build:
       context: .
       dockerfile: Dockerfile
-    image: piusiyke/fraud-api:latest
-    container_name: fraud-api
+    image: piusiyke/fastapi-app:latest
+    container_name: fastapi-app
     ports:
       - "8000:8000"
     networks:
