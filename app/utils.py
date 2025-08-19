@@ -1,8 +1,8 @@
 import joblib
 import numpy as np
 
-model = joblib.load("src/model/fraud_model.pkl")
-scaler = joblib.load("src/model/scaler.pkl")
+model = joblib.load("models/logistic_model.pkl")
+scaler = joblib.load("models/scaler.pkl")
 
 def predict(data):
     values = np.array([list(data.dict().values())])
