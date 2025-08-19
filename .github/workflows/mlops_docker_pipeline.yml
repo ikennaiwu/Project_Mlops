@@ -92,7 +92,7 @@ jobs:
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ubuntu
-          key: ${{ secrets.AWS_SSH_KEY_B64 }}
+          key_path: mlopkey.pem
           script: |
             cd /home/ubuntu/Project_Mlops
             git pull origin main
